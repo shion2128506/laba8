@@ -1,136 +1,115 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <math.h>
-#include <locale.h>
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h> 
+#include <math.h> 
+#include <locale.h> 
 
-void task0();
-void task1();
-void task2();
-void task3();
+void task0(); 
+void task1(); 
+void task2(); 
+void task3(); 
 
-int main()
-{
-	setlocale(LC_ALL, "RUS");
-	task0();
-	task1();
-	task2();
-    task3();
-}
+int main() { 
+    setlocale(LC_ALL, "RUS"); 
+    task0(); 
+    task1(); 
+    task2(); 
+    task3(); 
+} 
 
-void task0()
-{
-    int count;
-    char symbol;
+void task0() { 
+    int count; 
+    char symbol; 
+    printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ: "); 
+    scanf("%d", &count); 
+    getchar(); 
+    printf("Р’РІРµРґРёС‚Рµ СЃРёРјРІРѕР» РґР»СЏ РїРµС‡Р°С‚Рё: "); 
+    scanf("%c", &symbol); 
 
-    printf("Введите количество символов: ");
-    scanf("%d", &count);
+    printf("\n1. Р‘Р°Р·РѕРІС‹Р№ РІС‹РІРѕРґ\n"); 
+    for (int start = 1; start <= count; start++) { 
+        putchar(symbol); 
+    } 
+    printf("\n"); 
 
-    getchar();
+    printf("\n2. РЎ РїР»СЋСЃР°РјРё РІ РЅР°С‡Р°Р»Рµ Рё РІ РєРѕРЅС†Рµ\n"); 
+    putchar('+'); 
+    for (int i = 1; i <= count; i++) { 
+        putchar(symbol); 
+    } 
+    putchar('+'); 
+    printf("\n"); 
 
-    printf("Введите символ для печати: ");
-    scanf("%c", &symbol);
+    printf("\n3. РџРµСЂРІР°СЏ РїРѕР»РѕРІРёРЅР° РѕРґРЅРёРј, РІС‚РѕСЂР°СЏ РґСЂСѓРіРёРј\n"); 
+    for (int i = 1; i <= count / 2; i++) { 
+        putchar(symbol); 
+    } 
+    for (int i = 1; i <= count - (count / 2); i++) { 
+        putchar('#'); 
+    } 
+    printf("\n"); 
 
-    printf("\n1. Базовый вывод\n");
-    for (int start = 1; start <= count; start++) 
-    {
-        putchar(symbol);
-    }
-    printf("\n");
+    printf("\n4. РЎ РІРѕСЃРєР»РёС†Р°С‚РµР»СЊРЅС‹Рј Р·РЅР°РєРѕРј РїРѕСЃР»Рµ РєР°Р¶РґРѕРіРѕ СЃРёРјРІРѕР»Р°\n"); 
+    for (int i = 1; i <= count; i++) { 
+        putchar(symbol); 
+        putchar('!'); 
+    } 
+    printf("\n\n"); 
+} 
 
-    printf("\n2. С плюсами в начале и в конце\n");
-    putchar('+');
-    for (int i = 1; i <= count; i++) 
-    {
-        putchar(symbol);
-    }
-    putchar('+');
-    printf("\n");
+void task1() { 
+    int n, m; 
+    int s = 0; 
+    int k = 1; 
+    printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ m (РЅР°С‡Р°Р»Рѕ): "); 
+    scanf("%d", &m); 
+    printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ n (РєРѕРЅРµС†): "); 
+    scanf("%d", &n); 
 
-    printf("\n3. Первая половина одним, вторая другим\n");
-    for (int i = 1; i <= count / 2; i++) 
-    {
-        putchar(symbol);
-    }
-    for (int i = 1; i <= count - (count / 2); i++) 
-    {
-        putchar('#');
-    }
-    printf("\n");
+    int start = (m > n) ? m : n; 
+    int end = (m > n) ? n : m; 
 
-    printf("\n4. С восклицательным знаком после каждого символа\n");
-    for (int i = 1; i <= count; i++) 
-    {
-        putchar(symbol);
-        putchar('!');
-    }
-    printf("\n\n");
-}
-void task1()
-{
-    int n, m;
-    int s = 0;
-    int k = 1;
+    for (int i = start; i >= end; i--) { 
+        s += i; 
+        printf("РІС‹РїРѕР»РЅРµРЅРѕ %d СЂР°Р·\n", k); 
+        k++; 
+    } 
+    printf("СЂРµР·СѓР»СЊС‚Р°С‚ %d\n\n", s); 
+} 
 
-    printf("Введите число m (начало): ");
-    scanf("%d", &m);
-    printf("Введите число n (конец): ");
-    scanf("%d", &n);
+void task2() { 
+    double step; 
+    double start = 2.0; 
+    double end = 4.0; 
+    printf("РўР°Р±СѓР»РёСЂРѕРІР°РЅРёРµ С„СѓРЅРєС†РёРё: y = 2^x - 2x^2 - 1\n"); 
+    printf("РћС‚СЂРµР·РѕРє: [2; 4]\n\n"); 
+    printf("Р’РІРµРґРёС‚Рµ С€Р°Рі С‚Р°Р±СѓР»СЏС†РёРё (РЅР°РїСЂРёРјРµСЂ, 0.5 РёР»Рё 0.2): "); 
+    scanf("%lf", &step); 
 
-    int start = (m > n) ? m : n;
-    int end = (m > n) ? n : m;
+    if (step <= 0) { 
+        printf("РћС€РёР±РєР°: С€Р°Рі РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ!\n"); 
+    } 
 
-    for (int i = start; i >= end; i--) 
-    {
-        s += i;
-        printf("выполнено %d раз\n", k);
-        k++;
-    }
+    printf("\n-----------------------\n"); 
+    printf("|   x   |    f(x)     |\n"); 
+    printf("-----------------------\n"); 
 
-    printf("результат %d\n\n", s);
-}
-void task2()
-{
-    double step;
-    double start = 2.0;
-    double end = 4.0;
+    for (double x = start; x <= end + 0.000001; x += step) { 
+        double y = pow(2, x) - 2 * pow(x, 2) - 1; 
+        printf("| %5.2f | %11.4f |\n", x, y); 
+    } 
+    printf("-----------------------\n\n"); 
+} 
 
-    printf("Табулирование функции: y = 2^x - 2x^2 - 1\n");
-    printf("Отрезок: [2; 4]\n\n");
+void task3() { 
+    int n; 
+    printf("Р’РІРµРґРёС‚Рµ С†РµР»РѕРµ С‡РёСЃР»Рѕ n: "); 
+    scanf("%d", &n); 
+    double sum = 0.0; 
 
-    printf("Введите шаг табуляции (например, 0.5 или 0.2): ");
-    scanf("%lf", &step);
-
-    if (step <= 0) 
-    {
-        printf("Ошибка: шаг должен быть больше нуля!\n");
-    }
-
-    printf("\n-----------------------\n");
-    printf("|   x   |    f(x)     |\n");
-    printf("-----------------------\n");
-
-    for (double x = start; x <= end + 0.000001; x += step) 
-    {
-        double y = pow(2, x) - 2 * pow(x, 2) - 1;
-        printf("| %5.2f | %11.4f |\n", x, y);
-    }
-
-    printf("-----------------------\n\n");
-}
-void task3()
-{
-    int n;
-    printf("Введите целое число n: ");
-    scanf("%d", &n);
-
-    double sum = 0.0;
-
-    for (int i = 0; i <= n; i++) 
-    {
-        double sign = (i % 2 == 0) ? 1.0 : -1.0;
-        double denominator = pow(2, i);
-
-        sum += sign * (1.0 / denominator);
-    }
-    printf("Результат вычисления суммы: %.6f\n", sum);
+    for (int i = 0; i <= n; i++) { 
+        double sign = (i % 2 == 0) ? 1.0 : -1.0; 
+        double denominator = pow(2, i); 
+        sum += sign * (1.0 / denominator); 
+    } 
+    printf("Р РµР·СѓР»СЊС‚Р°С‚ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃСѓРјРјС‹: %.6f\n", sum); 
 }
